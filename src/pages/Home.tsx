@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import { format } from "date-fns"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { useToast } from "@/hooks/use-toast"
+import { Badge } from '@/components/ui/badge'
 
 interface Task {
     id: number
@@ -107,6 +108,19 @@ function Home() {
         setDeleteTaskId(null)
     }
 
+    const getStatusBadge = (status: string) => {
+        switch (status) {
+            case "pending":
+                return <Badge variant="secondary">Pending</Badge>
+            case "in-progress":
+                return <Badge variant="default" className="bg-blue-500 hover:bg-blue-600">In Progress</Badge>
+            case "completed":
+                return <Badge variant="default" className="bg-green-500 hover:bg-green-600">Completed</Badge>
+            default:
+                return <Badge>{status}</Badge>
+        }
+    }
+
     if (isLoading) {
         return (
             <div className="flex justify-center items-center h-screen">
@@ -148,11 +162,7 @@ function Home() {
                     <TableRow key={task.id}>
                         <TableCell className="font-medium">{task.title}</TableCell>
                         <TableCell>{task.description}</TableCell>
-                        <TableCell>
-                            <span className="inline-block px-2 py-1 text-xs font-semibold rounded-full bg-primary text-primary-foreground">
-                                {task.status}
-                            </span>
-                        </TableCell>
+                        <TableCell>{getStatusBadge(task.status)}</TableCell>
                         <TableCell>{format(new Date(task.due_date), "PP")}</TableCell>
                         <TableCell>
                             <div className="flex space-x-2">
