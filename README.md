@@ -11,7 +11,7 @@
 <h3>Installation</h3>
 <ol>
   <li><strong>Clone the Repository</strong>
-    <pre><code>git clone &lt;repository-url&gt;</code></pre>
+    <pre><code>git clone https://github.com/kufle/task-manager-frontend</code></pre>
   </li>
   <li><strong>Configure API Base URL</strong>
     <ul>
@@ -28,4 +28,4 @@
 </ol>
 
 <h3>Usage</h3>
-<p>After starting, the project will be available at <code>http://localhost:3000</code> (or the default port set in the project).</p>
+<p>After starting, the project will be available at <code>http://localhost:5173</code> (or the default port set in the project).</p>
